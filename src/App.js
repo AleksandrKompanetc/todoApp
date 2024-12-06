@@ -1,41 +1,50 @@
-import React, { useState } from "react"
-import './App.css'
+import React, { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([])
-  const [input, setInput] = useState('')
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState('');
 
   const addTodo = () => {
-    if (input.trim() === '') return
-    setTodos([...todos, input])
-    setInput('')
-  }
+    if (input.trim() === '') return; // Проверка на пустой ввод
+    setTodos([...todos, { text: input, completed: false }]);
+    setInput('');
+  };
+
+  const toggleComplete = (index) => {
+    const newTodos = todos.map((todo, i) =>
+      i === index ? { ...todo, completed: !todo.completed } : todo
+    );
+    setTodos(newTodos);
+  };
 
   const removeTodo = (index) => {
-    const newList = todos.filter((_, i) => i !== index)
-    setTodos(newList)
-  }
- 
+    const newTodos = todos.filter((_, i) => i !== index);
+    setTodos(newTodos);
+  };
+
   return (
     <div className="App">
-      <h1>List task</h1>
-      <input 
-        type="text" 
+      <h1>Список задач</h1>
+      <input
+        type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Enter new task..."
+        placeholder="Добавьте новую задачу"
       />
-      <button onClick={addTodo}>Add</button>
+      <button onClick={addTodo}>Добавить</button>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>
-            {todo}
-            <button onClick={() => removeTodo(index)}>Delete</button>
+          <li key={index} className={todo.completed ? 'completed' : ''}>
+            <span onClick={() => toggleComplete(index)}>
+              {todo.text}
+            </span>
+            <button onClick={() => removeTodo(index)}>Удалить</button>
           </li>
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 export default App;
