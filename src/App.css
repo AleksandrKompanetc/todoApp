@@ -71,6 +71,15 @@ li {
   width: 300px;
 }
 
+li.completed span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+li span {
+  cursor: pointer;
+}
+
 li button {
   background-color: #ff4d4d;
   color: white;
