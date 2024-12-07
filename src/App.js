@@ -4,24 +4,26 @@ import './App.css';
 function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
-
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editInput, setEditInput] = useState('');
+ 
   const addTodo = () => {
-    if (input.trim() === '') return; // Проверка на пустой ввод
-    setTodos([...todos, { text: input, completed: false }]);
-    setInput('');
-  };
+    if (input.trim() === '') return
+    setTodos([...todos, {text: input, completed: false }])
+    setInput('')
+  }
 
   const toggleComplete = (index) => {
     const newTodos = todos.map((todo, i) =>
-      i === index ? { ...todo, completed: !todo.completed } : todo
-    );
-    setTodos(newTodos);
-  };
+      i === index ? {...todo, completed: !todo.completed} : todo 
+    )
+    setTodos(newTodos)                                                                                      
+  }
 
   const removeTodo = (index) => {
-    const newTodos = todos.filter((_, i) => i !== index);
-    setTodos(newTodos);
-  };
+    const newTodos = todos.filter((_, i) => i !== index)
+    setTodos(newTodos)
+  }
 
   return (
     <div className="App">
