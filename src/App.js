@@ -55,6 +55,23 @@ function App() {
       <ul>
         {todos.map((todo, index) => (
           <li key={index} className={todo.completed ? 'completed' : ''}>
+            {editingIndex === index ? (
+              <>
+                <input 
+                  type="text" 
+                  value={editInput}
+                  onChange={(e) => setEditInput(e.target.value)}
+                />
+                <button onClick={saveEdit}>Save</button>
+                <button onClick={cancelEdit}>Cancel</button>
+              </>
+            ) : (
+              <>
+                <span onClick={}></span>
+                <button onClick={}></button>
+                <button onClick={}></button>
+              </>
+            )}
             <span onClick={() => toggleComplete(index)}>
               {todo.text}
             </span>
