@@ -30,6 +30,13 @@ function App() {
     setEditInput(todos[index].text)
   }
 
+  const saveEdit = () => {
+    const newTodos = todos.map((todo, i) => 
+    i === editingIndex ? {...todo, text: editInput} : todo)
+    setTodos(newTodos)
+    cancelEdit()
+  }
+
   return (
     <div className="App">
       <h1>Список задач</h1>
