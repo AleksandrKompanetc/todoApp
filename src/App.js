@@ -37,6 +37,11 @@ function App() {
     cancelEdit()
   }
 
+  const cancelEdit = () => {
+    setEditingIndex(null)
+    setEditInput('')
+  }
+
   return (
     <div className="App">
       <h1>Список задач</h1>
