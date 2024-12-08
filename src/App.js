@@ -25,6 +25,11 @@ function App() {
     setTodos(newTodos)
   }
 
+  const startEditing = (index) => {
+    setEditingIndex(index)
+    setEditInput(todos[index].text)
+  }
+
   return (
     <div className="App">
       <h1>Список задач</h1>
