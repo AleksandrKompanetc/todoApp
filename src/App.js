@@ -6,6 +6,11 @@ function App() {
   const [input, setInput] = useState('');
   const [editingIndex, setEditingIndex] = useState(null);
   const [editInput, setEditInput] = useState('');
+
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem('todos') || [])
+    setTodos(savedTodos)
+  }, [])
  
   const addTodo = () => {
     if (input.trim() === '') return
