@@ -67,15 +67,13 @@ function App() {
               </>
             ) : (
               <>
-                <span onClick={}></span>
-                <button onClick={}></button>
-                <button onClick={}></button>
+                <span onClick={() => toggleComplete(index)}>
+                  {todo.text}
+                </span>
+                <button onClick={() => startEditing(index)}>Change</button>
+                <button onClick={() => removeTodo(index)}>Delete</button>
               </>
             )}
-            <span onClick={() => toggleComplete(index)}>
-              {todo.text}
-            </span>
-            <button onClick={() => removeTodo(index)}>Удалить</button>
           </li>
         ))}
       </ul>
