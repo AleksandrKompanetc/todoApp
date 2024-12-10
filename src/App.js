@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -11,6 +11,10 @@ function App() {
     const savedTodos = JSON.parse(localStorage.getItem('todos') || [])
     setTodos(savedTodos)
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
  
   const addTodo = () => {
     if (input.trim() === '') return
